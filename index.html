@@ -1,11 +1,253 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>labon83 포트폴리오</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Artist Portfolio – labon83</title>
+  <meta name="description" content="조각·미디어 설치 포트폴리오" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#121820;
+      --ink:#e7eef7;
+      --muted:#9fb1c8;
+      --accent:#4aa3ff; /* 파랑 포인트 */
+      --border:#1b2330;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter','Pretendard',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:1120px;margin:0 auto;padding:20px}
+    .nav{position:sticky;top:0;z-index:20;background:linear-gradient(to bottom, rgba(11,15,20,.95), rgba(11,15,20,.75));backdrop-filter: blur(8px);border-bottom:1px solid var(--border)}
+    .nav .inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+    .logo{font-weight:700;letter-spacing:.5px}
+    .menu{display:flex;gap:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:#111822}
+    .accent{background:linear-gradient(135deg,#3088ff,#5ad4ff);border:none;color:#061422}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;padding:36px 20px 10px}
+    .hero-card{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+    .hero-card img{height:420px;width:100%;object-fit:cover;filter:saturate(1.05) contrast(1.1)}
+    .hero-text{padding:26px}
+    .kicker{color:var(--muted);font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+    h1{margin:.4rem 0 1rem;font-size:40px;line-height:1.12}
+    .tagline{color:var(--muted);font-size:16px}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+    .chip{font-size:12px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:#cfe4ff;background:#0f1622}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0}
+    .card{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);transition:transform .2s ease, box-shadow .2s ease}
+    .card:hover{transform:translateY(-4px)}
+    .card img{height:220px;width:100%;object-fit:cover}
+    .card .meta{padding:14px 14px 18px}
+    .meta h3{margin:0 0 6px;font-size:18px}
+    .meta p{margin:0;color:var(--muted);font-size:14px}
+    .section-title{display:flex;align-items:center;justify-content:space-between;margin:34px 0 8px}
+    .section-title h2{margin:0;font-size:22px}
+    .timeline{display:grid;grid-template-columns:1fr;gap:14px;margin:12px 0}
+    .tl-item{display:flex;gap:14px;padding:14px;border:1px solid var(--border);border-radius:12px;background:#0f1520}
+    .tl-yr{min-width:70px;color:#9cc6ff;font-weight:600}
+    .tl-txt{color:var(--muted)}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .about .panel{border:1px solid var(--border);border-radius:16px;background:var(--card);padding:18px}
+    .about h3{margin:0 0 8px}
+    .footer{margin:40px 0 20px;color:#8aa3c3;font-size:13px;border-top:1px solid var(--border);padding-top:20px}
+    .cta{display:flex;gap:10px;margin-top:16px}
+    .pill{padding:10px 12px;border-radius:12px;border:1px solid var(--border)}
+    .pill:hover{border-color:#2f3d53}
+    .accent-link{color:#a6d7ff}
+    /* 모바일 대응 */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr;gap:14px}
+      .hero-card img{height:300px}
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 620px){
+      .menu{display:none}
+      h1{font-size:30px}
+      .grid{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+    }
+  </style>
 </head>
+
 <body>
-  <h1>안녕하세요! labon83입니다 👋</h1>
-  <p>이곳은 제 전시와 작품을 소개하는 홈페이지입니다.</p>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="inner wrap" style="padding-left:0;padding-right:0">
+      <div class="logo">labon83 • Portfolio</div>
+      <div class="menu">
+        <a href="#works" class="pill">작품</a>
+        <a href="#about" class="pill">소개</a>
+        <a href="#exhibitions" class="pill">전시</a>
+        <a href="#contact" class="btn accent">문의하기</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card">
+        <!-- 메인 히어로 이미지 (Unsplash) -->
+        <img alt="installation image"
+             src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" loading="lazy">
+      </div>
+      <div class="hero-text">
+        <div class="kicker">Sculpture • Media Installation</div>
+        <h1>도시의 흐름과 경계를<br>조형과 인터랙션으로 번역합니다.</h1>
+        <p class="tagline">회전, 다공성, 감시의 조건, 파란 점 트래킹… 물성과 데이터를 결합한 설치로 관객의 동선을 작품의 일부로 만듭니다.</p>
+        <div class="chips">
+          <span class="chip">Kinetic Sculpture</span>
+          <span class="chip">Arduino / TouchDesigner</span>
+          <span class="chip">Video Projection</span>
+          <span class="chip">Data Visualization</span>
+        </div>
+        <div class="cta">
+          <a href="#works" class="btn">대표작 보기</a>
+          <a href="#contact" class="btn accent">콜라보 제안</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKS -->
+    <div class="section-title" id="works">
+      <h2>대표 작품</h2>
+      <a class="accent-link" href="#contact">더 많은 작업 문의 →</a>
+    </div>
+
+    <section class="grid">
+      <!-- 작품 카드들 (Unsplash 이미지 예시) -->
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1400&auto=format&fit=crop" alt="blue light installation" loading="lazy">
+        <div class="meta">
+          <h3>BLUE DOT – Tracing #01</h3>
+          <p>관객 이동을 파란 점으로 실시간 시각화하는 라이트 설치.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1400&auto=format&fit=crop" alt="rotating gate sculpture" loading="lazy">
+        <div class="meta">
+          <h3>Spin-Spot – Gate</h3>
+          <p>회전문 구조와 센서를 결합한 참여형 조각.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1544207240-40238b665c8a?q=80&w=1400&auto=format&fit=crop" alt="projection mapping" loading="lazy">
+        <div class="meta">
+          <h3>Porous City</h3>
+          <p>펜스 구조 위 프로젝션 매핑으로 도시의 경계 재구성.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1400&auto=format&fit=crop" alt="sensor kinetic" loading="lazy">
+        <div class="meta">
+          <h3>Tracer – Sensor Circuit</h3>
+          <p>초음파 센서와 모터로 반응하는 키네틱 조각.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1400&auto=format&fit=crop" alt="cctv data art" loading="lazy">
+        <div class="meta">
+          <h3>Afterimage of City</h3>
+          <p>CCTV 데이터로 생성된 잔상 맵을 공간에 투영.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1400&auto=format&fit=crop" alt="light scaffolding" loading="lazy">
+        <div class="meta">
+          <h3>Spot Bound</h3>
+          <p>파란 LED와 구조물의 리듬으로 동선 유도.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ABOUT -->
+    <div class="section-title" id="about">
+      <h2>소개</h2>
+    </div>
+    <section class="about">
+      <div class="panel">
+        <h3>작가 노트</h3>
+        <p>나는 ‘도시의 감각적 경계’를 조각과 미디어로 탐구한다. 회전/틈/감시라는 조건을 장치화하고,
+           관객의 몸이 만드는 데이터를 다시 공간으로 되돌려 관람 경험을 확장한다.</p>
+        <p style="color:var(--muted)">재료: 스틸 파이프, 베어링, 슬립링, LED, 편광필름 제거 TV, 초음파/IR 센서, 프로젝션</p>
+      </div>
+      <div class="panel">
+        <h3>기술 스택</h3>
+        <p class="chips" style="margin:0">
+          <span class="chip">Arduino</span>
+          <span class="chip">TouchDesigner</span>
+          <span class="chip">Processing</span>
+          <span class="chip">Python</span>
+          <span class="chip">Fusion 360</span>
+        </p>
+        <div class="cta">
+          <a href="#works" class="btn">작품 보기</a>
+          <a href="#contact" class="btn accent">협업 문의</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXHIBITIONS -->
+    <div class="section-title" id="exhibitions">
+      <h2>최근 전시</h2>
+    </div>
+    <section class="timeline">
+      <div class="tl-item">
+        <div class="tl-yr">2025 • 서울</div>
+        <div class="tl-txt"><strong>《Spin-Spot》</strong> – CR Collective / 도시의 경계와 파란 점 트래킹을 테마로 한 개인전</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-yr">2024 • 대구</div>
+        <div class="tl-txt"><strong>《흐르는 풍경, 쌓인 형태》</strong> – 우손갤러리 / 회전문·펜스 조각 설치</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-yr">2024 • 서울</div>
+        <div class="tl-txt"><strong>《Tracer》</strong> – 데이터 기반 인터랙티브 조명 설치</div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <div class="section-title" id="contact">
+      <h2>Contact</h2>
+    </div>
+    <section class="about">
+      <div class="panel">
+        <h3>협업 / 전시 제안</h3>
+        <p>설치·조각 제작 협업, 프로젝션 매핑, 센서 인터랙션 구축 가능합니다.</p>
+        <p>이메일: <a class="accent-link" href="mailto:hello@labon83.me">hello@labon83.me</a></p>
+      </div>
+      <div class="panel">
+        <h3>소셜</h3>
+        <p><a class="accent-link" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a> ·
+           <a class="accent-link" href="https://www.behance.net/" target="_blank" rel="noopener">Behance</a> ·
+           <a class="accent-link" href="https://vimeo.com/" target="_blank" rel="noopener">Vimeo</a></p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>© <span id="y"></span> labon83. All rights reserved.</div>
+      <div style="margin-top:6px;font-size:12px;color:#7e95b4">
+        이미지 출처: Unsplash (Joshua Coleman, Iswanto Arif, Simone Hutsch 등) – 교육/포트폴리오 예시 용도.
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // 연도 자동
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
